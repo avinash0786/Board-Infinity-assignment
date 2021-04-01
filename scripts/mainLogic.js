@@ -1,11 +1,15 @@
 console.log("Main js connected")
-
+listData()
 function submitTask(){
     console.log("Submitting task");
-    const name=$("#taskName").val();
-    const desc=$("#taskDesc").val();
-    const creator=$("#taskCreator").val();
+    const name=$("#taskName").val().trim();
+    const desc=$("#taskDesc").val().trim();
+    const creator=$("#taskCreator").val().trim();
     const duration=$("#duration").val();
+    if (name.length<=0 && desc.length<=0 && creator.length<=0){
+        alert("Enter valid data");
+        return;
+    }
     console.log(name,desc,creator,duration)
     const wait=$("#wait");
     const subm=$("#submit");
