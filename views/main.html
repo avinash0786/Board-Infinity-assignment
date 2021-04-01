@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>boardINF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/mainLogic.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center;margin-top: 3%;color: rgb(0,0,0);background: #ededed;">Board Infinity REST API Assignment</h1>
+</div>
+<div>
+    <div class="container">
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-md-6" style="max-width: auto;min-width: 30%;width: 100%;">
+                <form class="shadow" style="color: var(--dark);background: rgba(216,216,216,0.24);margin-left: 1px;padding-left: 16px;border-radius: 12px;">
+                    <h1>Add new task</h1>
+                    <label style="font-size: 37px;margin-bottom: 2px;" for="taskName">Task Name</label>
+                    <input class="form-control" type="text" id="taskName" required name="taskName" style="padding: 5px;margin: 0px;width: 97%;margin-bottom: 4px;height: 44px;">
+                    <label style="font-size: 37px;margin-bottom: 2px;" for="taskDesc">Task Description</label>
+                    <input class="form-control" type="text" id="taskDesc" required name="taskDesc" style="padding: 5px;margin: 0px;width: 97%;margin-bottom: 4px;height: 44px;">
+                    <label style="font-size: 37px;margin-bottom: 2px;" for="taskCreator">Creator</label>
+                    <input class="form-control" type="text" id="taskCreator" required name="taskCreator" style="padding: 5px;margin: 0px;width: 97%;margin-bottom: 4px;height: 44px;">
+                    <label style="font-size: 37px;margin-bottom: 2px;" for="duration">Duration (minutes)</label>
+                    <input class="form-control" type="number" id="duration" required name="duration" style="padding: 5px;margin: 0px;width: 97%;margin-bottom: 4px;height: 44px;">
+                    <div class="align-items-center align-self-center m-auto justify-content-xl-center align-items-xl-start" style="height: 56px;background: rgba(255,255,255,0);margin-bottom: 6px;width: 518px;margin-right: 11px;padding-right: 12px;padding-top: 8px;">
+                        <button class="btn btn-danger" type="reset">Clear</button>
+                        <button id="submit" class="btn btn-success text-center" type="button" style="margin-left: 23%;" onclick="submitTask()">Submit Task</button>
+                        <button id="wait" class="btn btn-info float-right" type="button" style="font-size: 16px; display: none">Saving Task&nbsp;
+                            <span class="spinner-border spinner-border-sm text-light text-center" role="status" style="font-size: 17px;width: 19px;height: 19px;"></span>
+                        </button></div>
+                </form>
+            </div>
+            <div class="col-md-6" style="background: rgba(234,246,248,0);border-radius: 16px;" id="taskLists">
+                <h1>List of Active Tasks <button onclick="listData()" class="btn btn-primary float-right" data-toggle="tooltip" type="button" style="margin-top: 7px;padding: 5px 5px;padding-right: 5px;width: 10%;height: 10%;background: rgba(222,230,238,0.92);" title="Refesh Data"><i class="fa fa-refresh" style="font-size: 22px;color: var(--green);width: 21.8625px;"></i></button></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,11 +1,6 @@
 const mongoose=require("mongoose");
 
 const tasks=mongoose.Schema({
-        taskID:{
-            type:Number,
-            required:true,
-            unique:true,
-        },
         taskName:{
             type:String,
             trim:true,
@@ -35,7 +30,6 @@ const tasks=mongoose.Schema({
             default:Date.now
         }
     },
-    { collection : 'tasks' }
 )
 
 mongoose.model('tasks',tasks);

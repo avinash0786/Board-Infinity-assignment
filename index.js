@@ -10,10 +10,11 @@ require("./database");
 
 const app=express();
 app.use(bodyparser.urlencoded({extended:true}));
+app.use(bodyparser.json({ limit: "50mb" }));
 app.use(express.static(path.join(__dirname,"./scripts")));
 
 app.get("/", (req,res)=>{
-    res.send("App running ready for /add and /list API")
+    res.sendFile(path.join(__dirname,"./views/main.html"));
 })
 
 app.get('/listTasks',((req, res) => {
@@ -23,24 +24,26 @@ app.get('/listTasks',((req, res) => {
         })
 }))
 
-app.get("/addTask",(req, res) => {
+app.post("/addTask",(req, res) => {
     console.log("Adding new task")
+    console.log(req.body)
     const timeNow=new Date();
-    const duration=1;
+    const duration=Number.parseInt(req.body.duration);
     var add=timeNow.getMinutes()+duration;
     timeNow.setMinutes(add);
 
     const task=new tasks({
-        taskID:2,
-        taskName:"First Task",
-        taskDesc:"This is first task to be deleted within time",
-        creator:"Admin",
-        duration:2,
+        taskName:req.body.name,
+        taskDesc:req.body.desc,
+        creator:req.body.creator,
+        duration:duration,
         expireAt:new Date(timeNow.toISOString())
     })
     task.save()
         .then(ans=>{
-            return res.send("Saved data: "+ans)
+            return res.json({
+                success:true
+            })
         })
 })
 
